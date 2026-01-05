@@ -34,7 +34,7 @@
     </div>
   </ng-container>
   
-  <div class="d-flex" style="height: {{(deviceType!=='MOBILE')?'calc(100vh - 50px)':'calc(100vh - 10px)'}};">
+  <div class="d-flex" style="height: {{(deviceType!=='MOBILE')?'calc(100vh - 50px)':'calc(100vh - 310px)'}};">
     <ng-container *ngIf="deviceType!=='MOBILE'">
       <div class="w-25 h-100 pt-2 px-2 d-flex flex-column justify-content-start menus" style="overflow: auto;" style="border-right: 1px solid #ccc;">
         <!-- Menus-->
@@ -114,7 +114,7 @@
               </div>
               <div class="d-flex flex-column align-items-end justify-content-start w-100 gap-2 pt-2 pe-1">
                 <div class="d-flex justify-content-between align-items-center w-100">
-                  <small class="px-2 py-0 shadowed card-released text-light" matTooltip="{{game.released?'Relaease date: '+gateReleaseDateFormatted(game.released):''}}" matTooltipPosition="below">{{gateReleaseDateFormatted(game.released)}}</small>
+                  <small class="px-2 py-0 shadowed card-released text-light" matTooltip="{{game.released?'Relaease date: '+getReleaseDateFormatted(game.released):''}}" matTooltipPosition="below">{{getReleaseDateFormatted(game.released)}}</small>
                   <div>
                     <i (click)="toggleFavouriteGame(game)" *ngIf="!isFavouriteGame(game)" matTooltip="Toggle favourite" matTooltipPosition="left" class="far fa-star text-light cursor-pointer"></i>
                     <i (click)="toggleFavouriteGame(game)" *ngIf="isFavouriteGame(game)" matTooltip="Toggle favourite" matTooltipPosition="left" class="fas fa-star text-warning cursor-pointer"></i>
@@ -165,7 +165,7 @@
           <i (click)="toggleFavouriteGame(gameDetail)" *ngIf="isFavouriteGame(gameDetail)" matTooltip="Toggle favourite" matTooltipPosition="above" class="fas fa-star text-warning cursor-pointer"></i>
           <i (click)="toggleWishlistGame(gameDetail)" *ngIf="!isWishlistGame(gameDetail)" matTooltip="Toggle wishlist" matTooltipPosition="above" class="far fa-heart text-light cursor-pointer"></i>
           <i (click)="toggleWishlistGame(gameDetail)" *ngIf="isWishlistGame(gameDetail)" matTooltip="Toggle wishlist" matTooltipPosition="above" class="fas fa-heart text-warning cursor-pointer"></i>
-          <span class="d-flex released px-2 shadowed">Release date: {{gateReleaseDateFormatted(gameDetail.released, true)}}</span>
+          <span class="d-flex released px-2 shadowed">Release date: {{getReleaseDateFormatted(gameDetail.released, true)}}</span>
         </div>
       </div>
 
