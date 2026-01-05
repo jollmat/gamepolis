@@ -1,1 +1,100 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; overflow: hidden; }
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-color: #333;
+    color: antiquewhite;
+    font-size: 14px;
+}
+
+a { text-decoration: none; }
+
+small { 
+    color: #888;
+    font-size: 11px;
+    position: relative;
+    top: -5px;
+    z-index:1;
+}
+
+table {
+
+    tbody {
+        tr {
+            td {
+                background-color: transparent !important;
+                border-bottom-color: transparent;
+                font-size: 14px;
+
+                &.active {
+                    border-radius: 25px;
+                    overflow: hidden;
+                    background-color: rgb(245, 209, 6) !important;
+                    padding-left: 20px !important;
+                    a { 
+                        color: #333; 
+                        &:hover { color: #333; }
+                    }
+                }
+
+                a { 
+                    color:antiquewhite;
+                    &:hover {
+                        color: rgb(246, 212, 167);
+                    }
+                }
+            }
+        }
+    }
+
+    &.table-fixed-head {
+        thead {
+            position: sticky;
+            top: 0px;
+            tr {
+                th {
+                    background-color: #FFFFFF;
+                    z-index: 1000;
+                    position: relative;
+                }
+            }
+        }
+    }
+}
+
+a {
+    color: aqua;
+    font-weight: 400;
+}
+
+.cursor-pointer { cursor: pointer; }
+.text-soft { color: antiquewhite; }
+
+.op-2 { opacity: .2; }
+.op-5 { opacity: .5; }
+
+.w-33 { width: calc(33% - 2px); }
+
+.shadowed {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.badge-outline {
+    background-color: transparent;
+    font-size: 0.65em;
+    padding: 0px 5px;
+
+    &.badge-success { border: 1px solid green; color: green; }
+    &.badge-warning { border: 1px solid orange; color: orange; }
+    &.badge-danger { border: 1px solid red; color: red; }
+    &.badge-lightgray { 
+        border: 1px solid lightgray; color: lightgray; 
+        &:hover { border: 1px solid lightgray; color: #333; background-color: lightgray;  }
+    }
+}
+
+.rounded-pill {
+    font-weight: 400 !important;
+}

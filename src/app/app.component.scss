@@ -1,0 +1,194 @@
+.app {
+    background-size: cover;      /* Cover entire element */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat;
+
+    .header {
+        position: sticky;
+        top: 0px;
+        z-index: 10;
+    }
+
+    .menus {
+        position: sticky;
+        top: 0px;
+    }
+
+    .game-card {
+        .card {
+            height: 300px;
+            background-size: cover;      /* Cover entire element */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat;
+            background-color: transparent;
+
+            .card-body {
+                .title {
+                    background-color: #ffffff;
+                    border-radius: 5px;
+                }
+                .rating {
+                    color: #fff;
+                    border-radius: 25px;
+                    font-size: 12px;
+                    width: 25px;
+                    min-width: 25px;
+                    height: 25px;
+                    text-align: center;
+                    vertical-align: middle;
+                }
+                .card-released {
+                    background-color: rgba($color: #000000, $alpha: .6);
+                    border-radius: 20px;
+                }
+                .card-platforms {
+                    background-color: rgba($color: #000000, $alpha: .6);
+                    border-radius: 20px;
+                }
+            }
+        }
+    }
+
+    .game-detail-container {
+        background-size: cover;      /* Cover entire element */
+        background-position: center; /* Center the image */
+        background-repeat: no-repeat;
+
+        h5.game-header { 
+            background-color: #333; 
+            color:white; 
+
+            .rating {
+                color: #fff;
+                border-radius: 25px;
+                font-size: 18px;
+                width: 35px;
+                min-width: 35px;
+                height: 35px;
+                text-align: center;
+                vertical-align: middle;
+                line-height: 36px;
+            }
+        }
+
+        .game-subheader { 
+            background-color: #666; 
+            color:antiquewhite; 
+            border-bottom: 5px solid #333;
+        }
+
+        .game-content {
+            overflow: auto;
+            height: calc(100vh - 205px);
+            .game-section {
+                background-color: #222;
+                color:white;
+                opacity: .8;
+                border-radius: 4px;
+                
+                &:hover {
+                    opacity: 1;
+                    cursor: default;
+                }
+
+                p.tags-template {
+                    overflow-y: auto;
+                    max-height: 65px;
+                }
+            }
+            .game-description, .game-sections-right {
+                overflow: auto;
+                max-height: calc(100vh - 240px);
+            }
+        }
+
+        .released{ 
+            background-color: #444;
+            border: 1px solid transparent;
+            color:antiquewhite; 
+            opacity: 1; 
+            font-size: 13px; 
+            border-radius: 4px; 
+        }
+
+        p {
+            color: #333;
+            background-color: #ffffff;
+            opacity: .6;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: default;
+
+            &.transparent {
+                background-color: transparent;
+                opacity:1;
+            }
+        }
+
+        .ratings-container {
+            border-radius: 25px;
+            overflow: hidden;
+            .rating-1 { background-color: red; }
+            .rating-3 { background-color: orange; }
+            .rating-4 { background-color: greenyellow; }
+            .rating-5 { background-color: green; }
+        }
+
+        .ratings-legend {
+            border-radius: 25px;
+            overflow: hidden;
+            background-color: transparent; 
+            color: #fff;
+
+            .rating-1 { color: red; }
+            .rating-3 { color: orange; }
+            .rating-4 { color: greenyellow; }
+            .rating-5 { color: green; }
+
+            span { font-size: 11px; }
+        }
+
+        ul.game-links {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+
+            li {
+                border-radius: 4px;
+                overflow: hidden;
+                font-size: 12px;
+            }
+        }
+        
+    }
+
+    .detail-platform-item {
+        font-size: 12px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    }
+
+    .game-price-item {
+        font-size: 11px;
+        background-color: #222; 
+        color:white;
+        opacity: .8;
+        border-radius: 4px;
+        overflow: hidden;
+
+        .game-price-item-game-name {
+            font-size: 13px;
+            font-weight: 400;
+            background-color: #000;
+            border-bottom: 1px solid #555;
+        }
+        .game-price-item-rating-text {
+            span { border-radius: 20px; }
+        }
+        .game-price-item-price {
+            background-color: #111;
+            border-radius: 5px;
+        }
+        &:hover { opacity: 1; }
+    }
+}

@@ -1,0 +1,17 @@
+<div class="slider" *ngIf="screenshots.length">
+
+  <button class="d-flex justify-content-center align-items-center nav left" (click)="prev()">
+    <i class="fas fa-chevron-left"></i>
+  </button>
+
+  <img
+    [src]="currentImage"
+    alt="Game screenshot"
+    loading="lazy"
+  />
+
+  <button class="d-flex justify-content-center align-items-center nav right" (click)="next()">
+    <i class="fas fa-chevron-right"></i>
+  </button>
+
+</div>
