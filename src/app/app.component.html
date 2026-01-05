@@ -1,37 +1,40 @@
 <div class="d-flex flex-column w-100 vh-100 app">
-  <div class="w-100 d-flex justify-content-between align-items-center bg-dark pt-3 px-3 header" [ngClass]="{'flex-column': deviceType==='MOBILE'}">
-    <h3 class="text-secondary m-0" style="position: relative;top: -10px;">{{title}}</h3>
+  <ng-container *ngIf="deviceType!=='MOBILE' || (deviceType==='MOBILE' && !gameDetail)">
+    <div class="w-100 d-flex justify-content-between align-items-center bg-dark pt-3 px-3 header" [ngClass]="{'flex-column': deviceType==='MOBILE'}">
+      <h3 class="text-secondary m-0" style="position: relative;top: -10px;">{{title}}</h3>
 
-    <div class="d-flex align-items-center gap-2" [ngClass]="{'flex-column w-100': deviceType==='MOBILE'}">
-      <!-- Platform -->
-      <mat-form-field appearance="fill" class="no-hover-select w-100">
-        <mat-label>Platform</mat-label>
-        <mat-select [(value)]="selectedPlatformId" [disableRipple]="true" (selectionChange)="onPlatformSelectChange($event)">
-          <ng-container *ngFor="let platform of platforms; trackBy: trackByPlatform">
-            <mat-option [value]="platform.id">{{platform.name}} <small *ngIf="platform.games_count" class="ms-1">({{platform.games_count}})</small></mat-option>
-          </ng-container>
-        </mat-select>
-      </mat-form-field>
-      <!-- Section -->
-      <ng-container *ngIf="deviceType==='MOBILE'">
+      <div class="d-flex align-items-center gap-2" [ngClass]="{'flex-column w-100': deviceType==='MOBILE'}">
+        <!-- Platform -->
         <mat-form-field appearance="fill" class="no-hover-select w-100">
-          <mat-label>Section</mat-label>
-          <mat-select [(value)]="selectedMenuId" [disableRipple]="true" (selectionChange)="onMenuSelectChange($event)">
-            <ng-container *ngFor="let menu of menus">
-              <mat-option [value]="menu.id">{{menu.label}}</mat-option>
+          <mat-label>Platform</mat-label>
+          <mat-select [(value)]="selectedPlatformId" [disableRipple]="true" (selectionChange)="onPlatformSelectChange($event)">
+            <ng-container *ngFor="let platform of platforms; trackBy: trackByPlatform">
+              <mat-option [value]="platform.id">{{platform.name}} <small *ngIf="platform.games_count" class="ms-1">({{platform.games_count}})</small></mat-option>
             </ng-container>
           </mat-select>
         </mat-form-field>
-      </ng-container>
-      <!-- Search -->
-      <mat-form-field appearance="fill" class="no-hover-select w-100">
-        <mat-label>Search Game</mat-label>
-        <input matInput [formControl]="searchControl" placeholder="Type a game name..." />
-        <mat-icon matSuffix></mat-icon>
-      </mat-form-field>
+        <!-- Section -->
+        <ng-container *ngIf="deviceType==='MOBILE'">
+          <mat-form-field appearance="fill" class="no-hover-select w-100">
+            <mat-label>Section</mat-label>
+            <mat-select [(value)]="selectedMenuId" [disableRipple]="true" (selectionChange)="onMenuSelectChange($event)">
+              <ng-container *ngFor="let menu of menus">
+                <mat-option [value]="menu.id">{{menu.label}}</mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+        </ng-container>
+        <!-- Search -->
+        <mat-form-field appearance="fill" class="no-hover-select w-100">
+          <mat-label>Search Game</mat-label>
+          <input matInput [formControl]="searchControl" placeholder="Type a game name..." />
+          <mat-icon matSuffix></mat-icon>
+        </mat-form-field>
+      </div>
     </div>
-  </div>
-  <div class="d-flex" style="height: {{(deviceType!=='MOBILE')?'calc(100vh - 50px)':'calc(100vh - 304px)'}};">
+  </ng-container>
+  
+  <div class="d-flex" style="height: {{(deviceType!=='MOBILE')?'calc(100vh - 50px)':'calc(100vh - 10px)'}};">
     <ng-container *ngIf="deviceType!=='MOBILE'">
       <div class="w-25 h-100 pt-2 px-2 d-flex flex-column justify-content-start menus" style="overflow: auto;" style="border-right: 1px solid #ccc;">
         <!-- Menus-->
@@ -156,13 +159,13 @@
       </h5>
 
       <div class="d-flex justify-content-between align-items-center w-100 ps-3 pe-4 mb-2 game-subheader">
-        <ng-container [ngTemplateOutlet]="platformIconsTemplate" [ngTemplateOutletContext]="{'gameDetailItem': gameDetail, showName:true}"></ng-container>
+        <ng-container [ngTemplateOutlet]="platformIconsTemplate" [ngTemplateOutletContext]="{'gameDetailItem': gameDetail, showName:deviceType!=='MOBILE'}"></ng-container>
         <div class="d-flex align-items-center gap-3">
           <i (click)="toggleFavouriteGame(gameDetail)" *ngIf="!isFavouriteGame(gameDetail)" matTooltip="Toggle favourite" matTooltipPosition="above" class="far fa-star text-light cursor-pointer"></i>
           <i (click)="toggleFavouriteGame(gameDetail)" *ngIf="isFavouriteGame(gameDetail)" matTooltip="Toggle favourite" matTooltipPosition="above" class="fas fa-star text-warning cursor-pointer"></i>
           <i (click)="toggleWishlistGame(gameDetail)" *ngIf="!isWishlistGame(gameDetail)" matTooltip="Toggle wishlist" matTooltipPosition="above" class="far fa-heart text-light cursor-pointer"></i>
           <i (click)="toggleWishlistGame(gameDetail)" *ngIf="isWishlistGame(gameDetail)" matTooltip="Toggle wishlist" matTooltipPosition="above" class="fas fa-heart text-warning cursor-pointer"></i>
-          <span class="released px-2 shadowed">Release date: {{gateReleaseDateFormatted(gameDetail.released)}}</span>
+          <span class="d-flex released px-2 shadowed">Release date: {{gateReleaseDateFormatted(gameDetail.released, true)}}</span>
         </div>
       </div>
 
@@ -172,7 +175,7 @@
             <p class="p-3 shadowed game-description" [innerHTML]="gameDetail.description"></p>
           </div>
         </ng-container>
-        <div class="d-flex flex-column gap-2 game-sections-right" [ngClass]="{'w-50':deviceType!=='MOBILE','w-100':deviceType==='MOBILE'}">
+        <div class="d-flex flex-column gap-2 game-sections-right" [ngClass]="{'w-50':deviceType!=='MOBILE', 'mobile': deviceType==='MOBILE','w-100':deviceType==='MOBILE'}">
           <p class="shadowed transparent">
             <app-screenshot-slider [screenshots]="gameScreenshots || []" class="shadowed"></app-screenshot-slider>
           </p>

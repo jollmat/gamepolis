@@ -99,6 +99,9 @@
             .game-description, .game-sections-right {
                 overflow: auto;
                 max-height: calc(100vh - 240px);
+                &.mobile {
+                    max-height: calc(100vh - 10px);
+                }
             }
         }
 

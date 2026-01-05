@@ -6,8 +6,8 @@ ng build --configuration production --base-href "/gamepolis/"
 DEPLOY
 ------
 
-mv dist/languify/browser/* dist/gamepolis/   
+mv dist/gamepolis/browser/* dist/gamepolis/   
 
-rmdir dist/languify/browser     
+rmdir dist/gamepolis/browser     
 
 npx angular-cli-ghpages --dir=dist/gamepolis

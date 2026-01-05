@@ -428,11 +428,17 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
-  gateReleaseDateFormatted(dateStr: string): string {
+  gateReleaseDateFormatted(dateStr: string, yearOnly = false): string {
     let dateParts =  dateStr.split('-');//.reverse().join('-')
     if (dateParts.length===3) {
       if (dateParts[0].length===4) {
+        if (yearOnly) {
+          return dateParts[0];
+        }
         return dateParts.reverse().join('-');
+      }
+      if (yearOnly) {
+        return dateParts[dateParts.length-1];
       }
       return dateParts.join('-');
     }
