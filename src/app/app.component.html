@@ -175,7 +175,7 @@
             <p class="p-3 shadowed game-description" [innerHTML]="gameDetail.description"></p>
           </div>
         </ng-container>
-        <div class="d-flex flex-column gap-2 game-sections-right" [ngClass]="{'w-50':deviceType!=='MOBILE', 'mobile': deviceType==='MOBILE','w-100':deviceType==='MOBILE'}">
+        <div class="d-flex flex-column gap-2 game-sections-right pb-3" [ngClass]="{'w-50':deviceType!=='MOBILE', 'mobile': deviceType==='MOBILE','w-100':deviceType==='MOBILE'}">
           <p class="shadowed transparent">
             <app-screenshot-slider [screenshots]="gameScreenshots || []" class="shadowed"></app-screenshot-slider>
           </p>
