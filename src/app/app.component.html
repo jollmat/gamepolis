@@ -169,7 +169,7 @@
         </div>
       </div>
 
-      <div class="d-flex w-100 gap-3 my-2 py-3 px-4 game-content">
+      <div class="d-flex w-100 gap-3 my-2 py-3 px-4 game-content" [ngClass]="{'mobile': deviceType==='MOBILE'}">
         <ng-container *ngIf="deviceType!=='MOBILE'">
           <div class="d-flex flex-column w-25">
             <p class="p-3 shadowed game-description" [innerHTML]="gameDetail.description"></p>

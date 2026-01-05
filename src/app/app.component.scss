@@ -80,6 +80,9 @@
         .game-content {
             overflow: auto;
             height: calc(100vh - 205px);
+            &.mobile {
+                height: calc(100vh);
+            }
             .game-section {
                 background-color: #222;
                 color:white;
