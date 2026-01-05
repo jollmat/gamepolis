@@ -9,6 +9,13 @@
         z-index: 10;
     }
 
+    .content {
+        height: calc(100vh - 50px);
+        &.mobile {
+            height: calc(100vh);
+        }
+    }
+
     .menus {
         position: sticky;
         top: 0px;

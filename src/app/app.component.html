@@ -34,7 +34,7 @@
     </div>
   </ng-container>
   
-  <div class="d-flex" style="height: {{(deviceType!=='MOBILE')?'calc(100vh - 50px)':'calc(100vh - 310px)'}};">
+  <div class="d-flex content" [ngClass]="{'mobile': deviceType==='MOBILE'}">
     <ng-container *ngIf="deviceType!=='MOBILE'">
       <div class="w-25 h-100 pt-2 px-2 d-flex flex-column justify-content-start menus" style="overflow: auto;" style="border-right: 1px solid #ccc;">
         <!-- Menus-->
@@ -343,7 +343,7 @@
   <div class="d-flex flex-column w-100 game-section p-2 pb-3 shadowed">
     <span class="px-2 badge rounded-pill text-light mb-2 shadowed" style="width: fit-content;">Metacritic URL</span>
     <p class="d-flex flex-wrap gap-1 p-0 px-1 m-0 transparent">
-      <span class="badge rounded-pill">
+      <span class="badge rounded-pill text-truncate">
         <a *ngIf="gameDetailItem.metacritic_url" href="{{gameDetailItem.metacritic_url}}" target="_blank">{{gameDetailItem.metacritic_url}}</a>
         <span *ngIf="!gameDetailItem.metacritic_url">-</span>
       </span>
@@ -386,17 +386,17 @@
       </ng-container>
     </div>
     <ng-container *ngIf="gameDetailItem.ratings && gameDetailItem.ratings.length>0">
-      <div class="d-flex justify-content-around align-items-center w-100 ratings-legend mt-2 gap-2 shadowed">
-        <div class="d-flex align-items-center px-2 gap-1">
+      <div class="d-flex justify-content-around align-items-start w-100 ratings-legend mt-2 gap-2 shadowed" [ngClass]="{'flex-column': deviceType==='MOBILE', 'mt-3': deviceType==='MOBILE', 'p-2': deviceType==='MOBILE'}">
+        <div class="d-flex px-2 gap-1" [ngClass]="{'align-items-start': deviceType==='MOBILE', 'align-items-center': deviceType!=='MOBILE'}">
           <i class="fas fa-circle rating-5"></i> <span>Exceptional</span>
         </div>
-        <div class="d-flex align-items-center px-2 gap-1">
+        <div class="d-flex align-items-center px-2 gap-1" [ngClass]="{'align-items-start': deviceType==='MOBILE', 'align-items-center': deviceType!=='MOBILE'}">
           <i class="fas fa-circle rating-4"></i> <span>Recommended</span>
         </div>
-        <div class="d-flex align-items-center px-2 gap-1">
+        <div class="d-flex align-items-center px-2 gap-1" [ngClass]="{'align-items-start': deviceType==='MOBILE', 'align-items-center': deviceType!=='MOBILE'}">
           <i class="fas fa-circle rating-3"></i> <span>Meh</span>
         </div>
-        <div class="d-flex align-items-center px-2 gap-1">
+        <div class="d-flex align-items-center px-2 gap-1" [ngClass]="{'align-items-start': deviceType==='MOBILE', 'align-items-center': deviceType!=='MOBILE'}">
           <i class="fas fa-circle rating-1"></i> <span>Skip</span>
         </div>
       </div>
