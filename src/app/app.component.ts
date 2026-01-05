@@ -428,7 +428,7 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
-  gaetReleaseDateFormatted(dateStr: string, yearOnly = false): string {
+  getReleaseDateFormatted(dateStr: string, yearOnly = false): string {
     if (!dateStr || dateStr.length===0 || dateStr.split('-').length!==3) {
       return dateStr;
     }
