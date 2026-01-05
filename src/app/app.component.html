@@ -165,7 +165,7 @@
           <i (click)="toggleFavouriteGame(gameDetail)" *ngIf="isFavouriteGame(gameDetail)" matTooltip="Toggle favourite" matTooltipPosition="above" class="fas fa-star text-warning cursor-pointer"></i>
           <i (click)="toggleWishlistGame(gameDetail)" *ngIf="!isWishlistGame(gameDetail)" matTooltip="Toggle wishlist" matTooltipPosition="above" class="far fa-heart text-light cursor-pointer"></i>
           <i (click)="toggleWishlistGame(gameDetail)" *ngIf="isWishlistGame(gameDetail)" matTooltip="Toggle wishlist" matTooltipPosition="above" class="fas fa-heart text-warning cursor-pointer"></i>
-          <span class="d-flex released px-2 shadowed">Release date: {{getReleaseDateFormatted(gameDetail.released, true)}}</span>
+          <span class="d-flex released px-2 shadowed"><span *ngIf="deviceType!=='MOBILE'">Release date: </span>{{getReleaseDateFormatted(gameDetail.released, true)}}</span>
         </div>
       </div>
 
@@ -207,8 +207,8 @@
   <div class="d-flex gap-2" [ngClass]="{'px-3 py-2':gameDetailItem}">
 
     <ng-container *ngIf="gameDetailItem && gameDetailItem.platforms?.length>0">
-      <ng-container *ngFor="let platform of  getSortedPlatforms(gameDetailItem.platforms)">
-        <ng-container *ngIf="platform && platform.platform.slug">
+      <ng-container *ngFor="let platform of  getSortedPlatforms(gameDetailItem.platforms); let idx = index;">
+        <ng-container *ngIf="platform && platform.platform.slug && idx<3">
 
           <ng-container *ngIf="platform.platform.slug.includes('playstation')">
             <div class="d-flex align-items-center gap-1 px-2 detail-platform-item shadowed" matTooltip="{{platform.platform.name}}" matTooltipPosition="above">
@@ -271,6 +271,9 @@
             </div>
           </ng-container>
           
+        </ng-container>
+        <ng-container *ngIf="platform && platform.platform.slug && idx===3">
+          <span>...</span>
         </ng-container>
       </ng-container>
     </ng-container>
