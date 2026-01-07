@@ -165,7 +165,7 @@
           <i (click)="toggleFavouriteGame(gameDetail)" *ngIf="isFavouriteGame(gameDetail)" matTooltip="Toggle favourite" matTooltipPosition="above" class="fas fa-star text-warning cursor-pointer"></i>
           <i (click)="toggleWishlistGame(gameDetail)" *ngIf="!isWishlistGame(gameDetail)" matTooltip="Toggle wishlist" matTooltipPosition="above" class="far fa-heart text-light cursor-pointer"></i>
           <i (click)="toggleWishlistGame(gameDetail)" *ngIf="isWishlistGame(gameDetail)" matTooltip="Toggle wishlist" matTooltipPosition="above" class="fas fa-heart text-warning cursor-pointer"></i>
-          <span class="d-flex released px-2 shadowed"><span *ngIf="deviceType!=='MOBILE'">Release date: </span>{{getReleaseDateFormatted(gameDetail.released, true)}}</span>
+          <span class="d-flex released px-2 shadowed"><span class="me-1" *ngIf="deviceType!=='MOBILE'">Release date: </span>{{getReleaseDateFormatted(gameDetail.released, false)}}</span>
         </div>
       </div>
 
